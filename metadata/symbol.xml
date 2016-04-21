@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<abstractia>
+    <dimension name="symbol">
+        <dval>A</dval>
+        <dval>B</dval>
+        <dval>C</dval>
+        <dval>D</dval>
+        <dval>E</dval>
+        <dval>F</dval>
+        <dval>G</dval>
+        <dval>H</dval>
+        <dval>I</dval>
+        <dval>J</dval>
+        <dval>K</dval>
+        <dval>L</dval>
+        <dval>M</dval>
+        <dval>N</dval>
+        <dval>O</dval>
+        <dval>P</dval>
+        <dval>Q</dval>
+        <dval>R</dval>
+        <dval>S</dval>
+        <dval>T</dval>
+        <dval>U</dval>
+        <dval>V</dval>
+        <dval>W</dval>
+        <dval>X</dval>
+        <dval>Y</dval>
+        <dval>Z</dval>
+        <dval>0</dval>
+        <dval>1</dval>
+        <dval>2</dval>
+        <dval>3</dval>
+        <dval>4</dval>
+        <dval>5</dval>
+        <dval>6</dval>
+        <dval>7</dval>
+        <dval>8</dval>
+        <dval>9</dval>
+        <dval>@</dval>
+        <dval>#</dval>
+        <dval>$</dval>
+        <dval>%</dval>
+        <dval>+</dval>
+        <dval>?</dval>
+    </dimension>
+</abstractia>

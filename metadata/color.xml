@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<abstractia>
+    <dimension name="color">
+        <dval name="white">#ffffff</dval>
+        <dval name="black">#000000</dval>
+        <dval name="purple">#cc00cc</dval>
+        <dval name="red">#880000</dval>
+    </dimension>
+</abstractia>

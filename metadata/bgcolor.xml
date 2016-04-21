@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<abstractia>
+    <dimension name="bgcolor">
+        <dval name="red">#dd0000</dval>
+        <dval name="green">#00cc00</dval>
+        <dval name="blue">#4444ff</dval>
+        <dval name="yellow">#ffff00</dval>
+        <dval name="rose">#ee9999</dval>
+        <dval name="mauve">#ffccff</dval>
+    </dimension>
+</abstractia>

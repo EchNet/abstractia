@@ -1,0 +1,7 @@
+Main-Class: com.abstractia.casinova.Main
+Specification-Version: 1.0
+Specification-Vendor: ech.net
+Implementation-Title: CASinova
+Implementation-Vendor: ech.net
+Implementation-Version: 1.0
+

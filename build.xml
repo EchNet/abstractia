@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+
+<project name="abstractia" default="build">
+
+    <property name="project.name" value="${ant.project.name}" />
+    <property name="version" value="1.0"/>
+
+    <property name="build.root.dir" location="/temp/build"/>
+    <property name="output.dir" value="${build.root.dir}/${project.name}"/>
+    <property name="output.jar" value="${output.dir}/${project.name}-${version}.jar"/>
+    <property name="classes.flag" value="${output.dir}/classes.flag"/>
+    <property name="data.xml" value="${output.dir}/data.xml"/>
+
+    <target name="build" description="build" depends="webapp">
+    </target>
+
+    <target name="classes" depends="classes-check" unless="classes-uptodate">
+        <mkdir dir="${output.dir}/classes"/>
+        <javac destdir="${output.dir}/classes"
+                includeantruntime="false">
+            <src path="src"/>
+            <include name="**/*.java" />
+            <classpath>
+                <fileset dir="jarheaven">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+        <touch file="${classes.flag}"/>
+    </target>
+
+    <target name="classes-check">
+        <uptodate property="classes-uptodate" targetfile="${classes.flag}">
+            <srcfiles dir="src" includes="**/*.java" />
+        </uptodate>
+    </target>
+
+    <target name="jar" depends="classes,jar-check" unless="jar-uptodate">
+        <jar destfile="${output.jar}" manifest="src/META-INF/manifest.mf">
+            <fileset dir="${output.dir}/classes"/>
+        </jar>
+    </target>
+
+    <target name="jar-check">
+        <uptodate property="jar-uptodate" targetfile="${output.jar}">
+            <!-- listing the manifest here does not seem to accomplish anything..  -->
+            <srcfiles dir="${output.dir}/classes" includes="**/*" />
+            <srcfiles file="src/META-INF/manifest.mf"/>
+        </uptodate>
+    </target>
+
+    <target name="data" depends="jar,data-check" unless="data-uptodate">
+        <java jar="${output.jar}" fork="true" output="${data.xml}">
+            <arg value="metadata"/>
+            <arg value="-n"/>
+            <arg value="10000"/>
+        </java>
+    </target>
+
+    <target name="data-check">
+        <uptodate property="data-uptodate" targetfile="${data.xml}">
+            <srcfiles dir="metadata" includes="*.xml" />
+            <srcfiles file="${output.jar}" />
+        </uptodate>
+    </target>
+
+    <target name="webapp" depends="data">
+        <copy todir="${output.dir}/webapp">
+            <fileset dir="webapp">
+                <include name="*.*"/>
+            </fileset>
+        </copy>
+        <copy todir="${output.dir}/webapp/WEB-INF">
+            <fileset dir="webapp/WEB-INF"/>
+            <filterset>
+                <filter token="WEBAPP_BASE" value="${output.dir}/webapp"/>
+            </filterset>
+        </copy>
+        <copy todir="${output.dir}/webapp/WEB-INF/lib">
+            <fileset file="${output.jar}"/>
+        </copy>
+        <copy todir="${output.dir}/webapp/img">
+            <fileset dir="webapp/img"/>
+        </copy>
+    </target>
+
+    <target name="clean" description="clean">
+        <delete dir="${output.dir}"/>
+    </target>
+  
+</project>

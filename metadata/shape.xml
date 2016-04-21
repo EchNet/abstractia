@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<abstractia>
+    <dimension name="shape">
+        <dval>circle</dval>
+        <dval>triangle</dval>
+        <dval>square</dval>
+        <dval>diamond</dval>
+        <dval>house</dval>
+        <dval>hexagon</dval>
+        <dval>star</dval>
+        <dval>sun</dval>
+    </dimension>
+</abstractia>
